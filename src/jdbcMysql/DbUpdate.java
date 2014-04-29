@@ -22,6 +22,8 @@ public class DbUpdate {
 		connection = dbConnect.getConnection();
 		
 		try {
+			
+			//POINT1: updatable
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,	ResultSet.CONCUR_UPDATABLE);
 		} catch (SQLException sqle) {
 			System.out.println("sql: Failed");
@@ -42,9 +44,12 @@ public class DbUpdate {
 			System.out.println("\nBEFORE UPDATE:");
 			dbQuery.printResultSet(resultSet);
 
-			// NOW update
+			// Set of operations
+			// a. - positioning
 			resultSet.absolute(1);
+			// b. - point change
 			resultSet.updateString(setColumn, setValue);
+			// c. - change takes effect
 			resultSet.updateRow();
 
 			System.out.println("\nAFTER UPDATE:");

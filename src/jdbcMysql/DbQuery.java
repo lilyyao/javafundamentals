@@ -69,6 +69,7 @@ public class DbQuery {
 	public void printResultSet(ResultSet resultSet) {
 		if (resultSet != null) {
 			try {
+			// positioning	
 			resultSet.beforeFirst();
 			int numOfColumns = resultSet.getMetaData().getColumnCount();
 			while (resultSet.next()) {
