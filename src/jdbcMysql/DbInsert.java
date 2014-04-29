@@ -44,6 +44,7 @@ public class DbInsert {
 			resultSet.moveToInsertRow(); 
 
 			resultSet.updateString(insertColumn, insertValue);
+			// takes effect in the DB
 			resultSet.insertRow();
 
 			System.out.println("\nAFTER INSERT:");
@@ -53,15 +54,15 @@ public class DbInsert {
 			System.out.println("sql: Failed");
 			sqle.printStackTrace();
 			System.exit(-1);
-		} finally {
-			dbConnect.closeConnection();
-		}
+		} 
 	}
 	
 	public static void main(String[] args) {
 		String table = "contact";
 		DbInsert dbInsert = new DbInsert(table);
 		dbInsert.exeInsert("firstName", "Jasmine");
+		dbInsert.exeInsert("firstName", "Lily");
+		dbInsert.exeInsert("firstName", "A");
 	}
 
 }

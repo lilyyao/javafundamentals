@@ -13,31 +13,18 @@ public class DbUpdate {
 	private DbQuery dbQuery;
 	private ResultSet resultSet;
 
-	private String tableName;
-
-	public DbUpdate(String table) {
-		this.tableName = table;
-
+	public DbUpdate() {
 		dbConnect = new DbConnect();
 		connection = dbConnect.getConnection();
-		
-		try {
-			
-			//POINT1: updatable
-			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,	ResultSet.CONCUR_UPDATABLE);
-		} catch (SQLException sqle) {
-			System.out.println("sql: Failed");
-			sqle.printStackTrace();
-			System.exit(-1);
-		} 
-
 		dbQuery = new DbQuery();
 	}
-
-	public void exeUpdate(String filterColumnName, String filterValue,
+		
+	public void exeUpdate(String tableName, String filterColumnName, String filterValue,
 			String setColumn, String setValue) {
 
-		try {
+		try {			
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,	ResultSet.CONCUR_UPDATABLE);
+
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM "
 					+ tableName + " WHERE " + filterColumnName + "= \""
 					+ filterValue + "\"");
@@ -65,9 +52,11 @@ public class DbUpdate {
 	}
 	
 	public static void main(String[] args) {
+		String database = "addressbook";
 		String table = "contact";
-		DbUpdate dbUpdate = new DbUpdate(table);
-		dbUpdate.exeUpdate("firstName", "Lily", "phoneNo", "919876543222");
+		
+		DbUpdate dbUpdate = new DbUpdate();
+		dbUpdate.exeUpdate(table, "firstName", "Lily", "phoneNo", "8888");
 	}
 
 }
