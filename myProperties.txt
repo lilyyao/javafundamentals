@@ -1,0 +1,2 @@
+myKey1 = myValue1
+myIp = 1.2.3.4
