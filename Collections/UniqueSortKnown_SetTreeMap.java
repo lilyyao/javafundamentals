@@ -1,10 +1,12 @@
+package Collections;
+
 import java.util.Set;
 import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.Map;
 import java.util.HashMap;
 
-public class Collections_UniqueSortKnown_SetTreeMap {
+public class UniqueSortKnown_SetTreeMap {
    public static void main(String[] args) {
       String tongueTwister = "I feel, a feel, a special feel, a special feel I feel, " +
             "if you feel the feel I feel, I feel the feel you feel, ahem.";
